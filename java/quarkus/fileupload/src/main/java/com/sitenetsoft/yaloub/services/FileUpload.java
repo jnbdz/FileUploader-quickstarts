@@ -12,6 +12,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
 
+/**
+ *
+ */
 @ApplicationScoped
 @Produces(MediaType.TEXT_HTML)
 @Path("files.html")
@@ -43,6 +46,12 @@ public class FileUpload {
 
     //@RestForm File file, @RestForm String text
 
+    /**
+     *
+     * @param file
+     * @param text
+     * @return
+     */
     @POST
     //@Path("/binary")
     public String sendMultipart(@RestForm @PartType(MediaType.APPLICATION_OCTET_STREAM) File file, @RestForm @PartType(MediaType.TEXT_PLAIN) String text) {
@@ -108,6 +117,12 @@ public class FileUpload {
         return path;
     }
 
+    /**
+     *
+     * @param content
+     * @param filename
+     * @throws IOException
+     */
     private void writeFile(byte[] content, String filename) throws IOException {
 
         File file = new File(filename);
