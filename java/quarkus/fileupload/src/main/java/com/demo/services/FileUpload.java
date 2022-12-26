@@ -1,4 +1,4 @@
-package com.sitenetsoft.yaloub.services;
+package com.demo.services;
 
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;

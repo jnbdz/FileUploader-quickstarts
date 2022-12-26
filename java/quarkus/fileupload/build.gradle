@@ -20,7 +20,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
 }
 
-group 'com.sitenetsoft.yaloub.services'
+group 'com.demo.services'
 version '1.0.0-SNAPSHOT'
 
 java {
