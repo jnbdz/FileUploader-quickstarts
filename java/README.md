@@ -1,0 +1,8 @@
+# Java | FileUploader Quickstarts
+
+## Resources
+- [Sample Kaltura Chunked Upload Java | GitHub](https://github.com/kaltura/Sample-Kaltura-Chunked-Upload-Java)
+- [fileupload using Chunks and MultipartFileupload | StackOverflow](https://stackoverflow.com/questions/40287355/fileupload-using-chunks-and-multipartfileupload)
+- [chunked file upload | GitHub](https://github.com/eatonsw/chunked-file-upload)
+- [Commons Fileupload | commons | Apache](https://commons.apache.org/proper/commons-fileupload/)
+    - [Streaming | Commons fileupload | commons | Apache](https://commons.apache.org/proper/commons-fileupload/streaming.html)
