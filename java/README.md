@@ -7,3 +7,4 @@
 - [chunked file upload | GitHub](https://github.com/eatonsw/chunked-file-upload)
 - [Commons Fileupload | commons | Apache](https://commons.apache.org/proper/commons-fileupload/)
     - [Streaming | Commons fileupload | commons | Apache](https://commons.apache.org/proper/commons-fileupload/streaming.html)
+- [Quarkus File Upload example | Knowledge factory](https://www.knowledgefactory.net/2021/10/quarkus-file-upload-example.html)
