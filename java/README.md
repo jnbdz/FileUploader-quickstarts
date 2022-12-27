@@ -8,3 +8,4 @@
 - [Commons Fileupload | commons | Apache](https://commons.apache.org/proper/commons-fileupload/)
     - [Streaming | Commons fileupload | commons | Apache](https://commons.apache.org/proper/commons-fileupload/streaming.html)
 - [Quarkus File Upload example | Knowledge factory](https://www.knowledgefactory.net/2021/10/quarkus-file-upload-example.html)
+- [Quarkus Playground | GitHub](https://github.com/sdaschner/quarkus-playground/blob/file-upload/pom.xml)
