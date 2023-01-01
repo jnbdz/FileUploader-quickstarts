@@ -80,6 +80,12 @@ function handleFiles(files) {
     files.forEach(previewFile)
 }
 
+// @TODO Add preview from website url added. A screenshot from Puppeteer.
+// @TODO Preview for video and audio too. Need to add support of tracking where the user is at at playing the audio or the video.
+/**
+ *
+ * @param file
+ */
 function previewFile(file) {
     let reader = new FileReader()
 
@@ -95,12 +101,32 @@ function previewFile(file) {
     }
 }
 
+/**
+ *
+ * @param file
+ * @param i
+ */
 function uploadFile(file, i) {
-    var url = 'https://api.cloudinary.com/v1_1/joezimim007/image/upload'
-    var xhr = new XMLHttpRequest()
-    var formData = new FormData()
-    xhr.open('POST', url, true)
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+    const basedUrl = 'http://localhost:8080';
+    const sliceUploadPath = '/sliceUpload';
+    const basicUploadPath = '/upload';
+
+    if (window.FileReader) {
+        let fileReader = new FileReader();
+        //fileReader.
+    }
+
+    let xhr = new XMLHttpRequest();
+    let formData = new FormData();
+
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+    // For slice upload
+    xhr.setRequestHeader('Cache-Control', 'no-cache');
+    xhr.setRequestHeader('X-File-Name', file.name);
+    xhr.setRequestHeader('X-File-Size', file.size);
+    xhr.setRequestHeader('X-File-Type', ""); // @TODO Try to get the file type with javascript
 
     // Update progress (can be used to show progress indicator)
     xhr.upload.addEventListener("progress", function(e) {
@@ -108,10 +134,10 @@ function uploadFile(file, i) {
     })
 
     xhr.addEventListener('readystatechange', function(e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             updateProgress(i, 100) // <- Add this
         }
-        else if (xhr.readyState == 4 && xhr.status != 200) {
+        else if (xhr.readyState === 4 && xhr.status !== 200) {
             // Error. Inform the user
         }
     })
@@ -119,4 +145,24 @@ function uploadFile(file, i) {
     formData.append('upload_preset', 'ujpu6gyk')
     formData.append('file', file)
     xhr.send(formData)
+}
+
+/**
+ * Format file size.
+ * @param {Number} bytes
+ */
+const formatSize = function(bytes) {
+    let str = ['bytes', 'kb', 'MB', 'GB', 'TB', 'PB'];
+    let num = Math.floor(Math.log(bytes) / Math.log(1024));
+    return bytes === 0 ? 0 : (bytes / Math.pow(1024, Math.floor(num))).toFixed(1) + ' ' + str[num];
+}
+
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+const hasBlobSliceSupport = function(file) {
+    // file.slice is not supported by FF3.6 and is prefixed in FF5 now
+    return ('slice' in file || 'mozSlice' in file);
 }
